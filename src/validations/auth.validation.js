@@ -6,7 +6,7 @@ const register = {
 		email: Joi.string().required().email(),
 		password: Joi.string().required().custom(password),
 		name: Joi.string().required(),
-		role: Joi.string().required().lowercase().valid('farmer', 'customer', 'supplier')
+		role: Joi.string().required().lowercase().valid('farmer', 'customer', 'supplier','plant','warehouse','logistic','importer','exporter','textile')
 	}),
 };
 
