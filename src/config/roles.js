@@ -3,8 +3,9 @@ const AccessControl = require('accesscontrol');
 const ac = new AccessControl();
 
 const roleIds = {
-	ADMIN: '1',
-	USER: '2',
+	FARMER: '1',
+	CUSTOMER: '2',
+	SUPPLIER: '3',
 };
 
 const resources = {
@@ -13,7 +14,7 @@ const resources = {
 };
 
 const grantsObject = {
-	[roleIds.ADMIN]: {
+	[roleIds.FARMER]: {
 		[resources.USERINFO]: {
 			'create:any': ['*'],
 			'read:any': ['*'],
@@ -27,7 +28,7 @@ const grantsObject = {
 			'delete:any': ['*'],
 		},
 	},
-	[roleIds.USER]: {
+	[roleIds.SUPPLIER]: {
 		[resources.USERINFO]: {
 			'create:own': ['*'],
 			'read:own': ['*'],

@@ -6,6 +6,9 @@ const { decryptData } = require('../utils/auth');
 async function loginUserWithEmailAndPassword(req) {
 	const { email, password } = req.body;
 	const user = await userService.getUserByEmail(email);
+	if(!user){
+		throw new ApiError(httpStatus.UNAUTHORIZED, 'Invalid email or password');
+	}
 	const isPasswordMatch = await decryptData(password, user.password);
 
 	if (!user || !isPasswordMatch) {

@@ -1,3 +1,12 @@
 module.exports.authController = require('./auth.controller');
 module.exports.userController = require('./user.controller');
 module.exports.roleController = require('./role.controller');
+module.exports.farmerController = require('./farmer.controller');
+module.exports.plantController = require('./plant.controller');
+module.exports.exporterController = require('./exporter.controller');
+module.exports.importerController = require('./importer.controller');
+module.exports.logisticsController = require('./logistics.controller');
+module.exports.warehouseController = require('./warehouse.controller');
+module.exports.supplierController = require('./supplier.controller');
+module.exports.textileController = require('./textile.controller');
+module.exports.customerController = require('./customer.controller');

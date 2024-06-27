@@ -39,7 +39,7 @@ async function getUserById(id) {
 }
 
 async function createUser(req) {
-	const { email, name, password, roleId } = req.body;
+	const { email, name, password, role } = req.body;
 	const hashedPassword = await encryptData(password);
 	const user = await getUserByEmail(email);
 
@@ -47,9 +47,9 @@ async function createUser(req) {
 		throw new ApiError(httpStatus.CONFLICT, 'This email already exits');
 	}
 
-	const role = await roleService.getRoleById(roleId);
+	const roleObj = await db.role.findOne({ where: { name: role.toLowerCase() } });
 
-	if (!role) {
+	if (!roleObj) {
 		throw new ApiError(httpStatus.NOT_FOUND, 'Role not found');
 	}
 
@@ -57,7 +57,7 @@ async function createUser(req) {
 		.create({
 			name,
 			email,
-			role_id: roleId,
+			role_id: roleObj.id,
 			password: hashedPassword,
 		})
 		.then((resultEntity) => resultEntity.get({ plain: true }));
