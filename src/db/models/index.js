@@ -11,14 +11,14 @@ const basename = path.basename(module.filename);
 const db = {};
 
 const sequelize = new Sequelize(
-	config.sqlDB.database,
-	config.sqlDB.user,
-	config.sqlDB.password,
+	config.sqlDB.url,
 	{
 		...config.sqlDB,
+
 		logging: false,
 	}
 );
+
 
 fs.readdirSync(__dirname)
 	.filter(

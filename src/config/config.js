@@ -79,12 +79,18 @@ module.exports = {
 		cookieExpirationHours: envVars.COOKIE_EXPIRATION_HOURS,
 	},
 	sqlDB: {
-		user: envVars.SQL_USERNAME,
-		username: envVars.SQL_USERNAME,
-		host: envVars.SQL_HOST,
-		database: envVars.SQL_DATABASE_NAME,
-		password: envVars.SQL_PASSWORD,
+		connectionString: envVars.SQL_URL,
+		url: envVars.SQL_URL,
+		ssl: {
+			rejectUnauthorized: false,
+		},
 		dialect: envVars.SQL_DIALECT,
+		dialectOptions: {
+			ssl: {
+				require: true,
+				rejectUnauthorized: false,
+			},
+		},
 		pool: {
 			max: envVars.SQL_MAX_POOL,
 			min: envVars.SQL_MIN_POOL,
